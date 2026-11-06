@@ -1,56 +1,143 @@
-# Welcome to your Expo app 👋
+# InvoiceApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile invoice management application built with **React Native**, **Expo**, **TypeScript**, and **SQLite**.
 
-## Get started
+InvoiceApp is designed to help users manage invoices and organize their business records through a simple and user-friendly mobile experience.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- Create and manage invoices.
+- Store application data locally using SQLite.
+- Organize invoice-related functionality using a feature-based architecture.
+- Manage application settings.
+- Support Android development and testing through Expo Go.
 
-2. Start the app
+## Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+| Technology | Purpose |
+|---|---|
+| React Native | Mobile application development |
+| Expo SDK 54 | Development platform |
+| TypeScript | Type-safe development |
+| Expo Router | File-based navigation |
+| SQLite | Local database |
+| Expo Go | Testing and previewing |
 
-In the output, you'll find options to open the app in a
+## Project Structure
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+InvoiceApp/
+├── assets/
+├── src/
+│   ├── app/
+│   ├── database/
+│   │   ├── db.ts
+│   │   └── shop-db.ts
+│   └── features/
+│       ├── invoice/
+│       └── settings/
+├── app.json
+├── eas.json
+├── package.json
+└── README.md
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Getting Started
 
-### Other setup steps
+### 1. Clone the repository
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+```bash
+git clone https://github.com/Mohammed-TB/invoice-app.git
+```
 
-## Learn more
+### 2. Navigate to the project directory
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+cd invoice-app
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 3. Install dependencies
 
-## Join the community
+```bash
+npm install
+```
 
-Join our community of developers creating universal apps.
+### 4. Start the development server
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npx expo start --clear
+```
+
+## Running on LDPlayer 9
+
+This project can be tested using **LDPlayer 9** with Expo Go.
+
+The following steps describe the tested setup on Windows.
+
+### Requirements
+
+- LDPlayer 9 installed and running.
+- Android Debug Bridge (ADB).
+- Expo Go compatible with Expo SDK 54.
+
+### 1. Connect LDPlayer through ADB
+
+```powershell
+adb connect 127.0.0.1:5555
+```
+
+Verify the connection:
+
+```powershell
+adb -s 127.0.0.1:5555 shell getprop ro.product.model
+```
+
+### 2. Start Expo
+
+```powershell
+npx expo start --clear
+```
+
+### 3. Forward the Metro port
+
+Open another PowerShell terminal and run:
+
+```powershell
+adb -s 127.0.0.1:5555 reverse tcp:8081 tcp:8081
+```
+
+### 4. Open the application
+
+1. Open Expo Go inside LDPlayer.
+2. Connect to the project using the Metro URL or scan the QR code.
+3. Wait for the application to load.
+
+**Important:** The tested LDPlayer ADB address is `127.0.0.1:5555`. The ADB port may differ depending on your emulator configuration.
+
+For detailed instructions and troubleshooting, see:
+
+[LDPlayer 9 Expo Guide](./LDPlayer9_Expo_Guide.txt)
+
+## Development Notes
+
+- The project uses Expo SDK 54.
+- SQLite is used for local data storage.
+- Expo Go must be compatible with the project's Expo SDK version.
+- The application is developed and tested on Windows using LDPlayer 9.
+
+## Future Improvements
+
+- Improve invoice management workflows.
+- Add additional reporting features.
+- Enhance application settings.
+- Improve the overall user experience.
+
+## Author
+
+**Mohammed TB**
+
+GitHub: [@Mohammed-TB](https://github.com/Mohammed-TB)
+
+---
+
+*Built with React Native, Expo, TypeScript, and SQLite.*
